@@ -1,6 +1,9 @@
 name: Python CI/CD
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
 
 jobs:
   build:
@@ -21,4 +24,6 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run tests
-        run: python -m unittest discover
+        run: |
+          echo "Running unit tests..."
+          python -m unittest discover
